@@ -91,7 +91,11 @@ def split_into_separate_csvs(df):
     for account in unique_account_names:
         new_df = df[df['Account Name'] == account]
         
-        output_path = location / f'output/split files/{account}.csv'
+        output_folder = location / f'output/split files/'
+
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
+        output_path = output_folder / f'{account}.csv'
 
         try:
             new_df.to_csv(output_path, index=False)
