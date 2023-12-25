@@ -1,0 +1,7 @@
+# exclude everything
+input/*
+output/*
+
+# exception to the rule
+!input/.gitkeep
+!output/split
