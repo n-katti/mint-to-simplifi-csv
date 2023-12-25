@@ -1,7 +1,7 @@
 # exclude everything
 input/*
-output/*
+output/split files*
 
 # exception to the rule
 !input/.gitkeep
-!output/.gitkeep
+!output/split files/.gitkeep
