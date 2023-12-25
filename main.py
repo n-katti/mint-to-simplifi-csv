@@ -14,8 +14,10 @@ monarch_input = location / 'input/mint-transactions.csv'
 
 
 def add_categories_to_monarch(mint_df, monarch_df):
+    
     '''
-    Takes in two 
+    -------Deprecated-------
+    Takes in a df from Mint and a df from Monarch and adds categories to the Monarch df
     '''
 
     # Create two new dataframes, one with categories and one without
@@ -52,6 +54,11 @@ def add_categories_to_monarch(mint_df, monarch_df):
 
 def merge_monarch_with_mint(monarch_df, mint_df):
 
+    '''
+    Takes in a df from Mint and a df from Monarch and outputs rows from Mint that are also in Monarch
+    Additionally adds in any rows from Monarch that are NOT in Mint
+    '''
+
     # Columns to check for matching rows. While a join would accomplish the same thing, it would lead to fanning of the output due to duplicates
     columns_to_check = ['Date', 'Description', 'Original Description', 'Amount', 'Transaction Type', 'Account Name']
 
@@ -85,6 +92,9 @@ def merge_monarch_with_mint(monarch_df, mint_df):
 
 
 def split_into_separate_csvs(df):    
+    '''
+    Takes in cleaned df and outputs different dfs for each Account Name
+    '''
 
     unique_account_names = df['Account Name'].unique()
 
