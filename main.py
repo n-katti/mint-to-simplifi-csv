@@ -52,7 +52,7 @@ def add_categories_to_monarch(mint_df, monarch_df):
 
 def merge_monarch_with_mint(monarch_df, mint_df):
 
-    # Columns to check for matching rows
+    # Columns to check for matching rows. While a join would accomplish the same thing, it would lead to fanning of the output due to duplicates
     columns_to_check = ['Date', 'Description', 'Original Description', 'Amount', 'Transaction Type', 'Account Name']
 
     # Check which rows are in the mint export and the monarch export
