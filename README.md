@@ -3,7 +3,7 @@
 ## Usage
 
 ### This script will output the following three things: 
-1. Split CSVS by Account Name that you can use to import directly into Simplifi. These are located in the folder `output/split files`
+1. Split CSVs by Account Name that you can use to import directly into Simplifi. These are located in the folder `output/split files`
 2. `in_mint_and_monarch.csv` - this is the source that is used to split into the different CSVs. This is the output of taking your Mint export and Monarch export, excluding rows that are in the Mint export and <b>NOT</b> in the Monarch export, maintaining the categories from the Mint export, and adding on any additional rows from the Monarch export that are <b>NOT</b> in the Mint export (there are some Venmo transactions I had from the last few days picked up by Monarch and not Mint)
 3. `in_mint_not_in_monarch.csv` - if you're curious, these are the rows that were in the Mint export but <b>NOT</b> in the Monarch export and therefore excluded from the final split files
 
