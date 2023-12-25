@@ -93,10 +93,12 @@ def split_into_separate_csvs(df):
         
         output_folder = location / f'output/split files/'
 
+        # Check to see if split files folder exists already 
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
         output_path = output_folder / f'{account}.csv'
 
+        # If any account names have forbidden characters for file names, this will throw an exception
         try:
             new_df.to_csv(output_path, index=False)
         except Exception as e: 
