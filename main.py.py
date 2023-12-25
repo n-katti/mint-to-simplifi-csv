@@ -101,6 +101,7 @@ def split_into_separate_csvs(df):
         # If any account names have forbidden characters for file names, this will throw an exception
         try:
             new_df.to_csv(output_path, index=False)
+            print(f'{account}.csv file written')
         except Exception as e: 
             print(f'{account} file could not be written: {e}')
 
