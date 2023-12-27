@@ -55,8 +55,8 @@ try:
 
     new_rows.to_csv(output_folder / f'{account} comparison.csv', index=False)
 
-    # shutil.move(pre_path,  location / '04. processed inputs')
-    # shutil.move(post_path, location / '04. processed inputs')
+    shutil.move(pre_path,  location / '04. processed inputs')
+    shutil.move(post_path, location / '04. processed inputs')
 
 except Exception as e:
     print(e)
