@@ -2,12 +2,13 @@
 input/*
 output/*
 misc/*
-"misc/01. pre-link"/*
-"misc/02. post-link"/*
+misc/01.\ pre-link/*
+misc/02.post-link/*
+
 
 # exception to the rule
 !input/.gitkeep
 !output/.gitkeep
 !misc/comparison.py
-!misc/01. pre-link/.gitkeep
-!misc/02. post-link/.gitkeep
+!misc/01.\ pre-link/.gitkeep
+!misc/02.post-link/.gitkeep
