@@ -11,3 +11,5 @@ misc/*
 !misc/comparison.py
 !misc/.gitkeep
 !misc/.gitkeep
+!misc/01. pre-link
+!misc/02. pre-link
