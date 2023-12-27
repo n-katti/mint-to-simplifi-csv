@@ -9,7 +9,5 @@ misc/*
 !input/.gitkeep
 !output/.gitkeep
 !misc/comparison.py
-!misc/.gitkeep
-!misc/.gitkeep
-!misc/01. pre-link
-!misc/02. pre-link
+!misc/01. pre-link/.gitkeep
+!misc/02. post-link/.gitkeep
