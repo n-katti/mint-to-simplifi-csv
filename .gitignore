@@ -1,7 +1,7 @@
 # exclude everything
 input/*
 output/*
-misc/03. ouputs/*
+misc/03. outputs/*
 misc/04. processed inputs/*
 misc/01. pre-link/*
 misc/02. post-link/*
