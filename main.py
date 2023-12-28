@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-import pandas as pd 
+import pandas as pd
 
 location = Path(__file__).parent
 
@@ -14,7 +14,7 @@ monarch_input = location / 'input/mint-transactions.csv'
 
 
 def add_categories_to_monarch(mint_df, monarch_df):
-    
+
     '''
     -------Deprecated-------
     Takes in a df from Mint and a df from Monarch and adds categories to the Monarch df
@@ -30,7 +30,7 @@ def add_categories_to_monarch(mint_df, monarch_df):
     # Rename category columns to old (uncategorized) and new (from the mint file)
     new_df = new_df.rename(columns={'Category': 'Old Category', 'Category_right' : 'New Category'})
 
-    # Drop the _right labels and notes columns 
+    # Drop the _right labels and notes columns
     drop_columns = []
     for x in new_df.columns:
         if '_right' in x:
@@ -91,29 +91,33 @@ def merge_monarch_with_mint(monarch_df, mint_df):
     return consolidated_final
 
 
-def split_into_separate_csvs(df):    
+def split_into_separate_csvs(df):
     '''
     Takes in cleaned df and outputs different dfs for each Account Name
     '''
 
+    remove_punctuation_map = dict((ord(char), None) for char in '\/*?:"<>|')
     unique_account_names = df['Account Name'].unique()
 
     for account in unique_account_names:
         new_df = df[df['Account Name'] == account]
-        
+
         output_folder = location / f'output/split files/'
 
-        # Check to see if split files folder exists already 
+        # Sanitize account name to work as a file
+        sanitized_account = account.translate(remove_punctuation_map)
+
+        # Check to see if split files folder exists already
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
-        output_path = output_folder / f'{account}.csv'
+        output_path = output_folder / f'{sanitized_account}.csv'
 
         # If any account names have forbidden characters for file names, this will throw an exception
         try:
             new_df.to_csv(output_path, index=False)
-            print(f'{account}.csv file written')
-        except Exception as e: 
-            print(f'{account} file could not be written: {e}')
+            print(f'{sanitized_account}.csv file written')
+        except Exception as e:
+            print(f'{sanitized_account} file could not be written: {e}')
 
 with open(mint_input, 'r') as mint, open(monarch_input, 'r') as monarch:
     # Read the CSV files into pandas DataFrames
@@ -122,4 +126,3 @@ with open(mint_input, 'r') as mint, open(monarch_input, 'r') as monarch:
 
     merged = merge_monarch_with_mint(mint_df=mint_df, monarch_df=monarch_df)
     split_into_separate_csvs(df=merged)
-
